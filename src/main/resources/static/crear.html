@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <title>ITicket</title>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <link rel="stylesheet" href="css/crear.css"/>
+        
+    </head>
+    
+    <body>
+        
+        <div class="navbar">
+                
+                <img src="images/iticketlogo.png" alt="alt" class="logo"/>
+                
+                
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="crear.html">Crear Evento</a></li>                    
+                    </ul> 
+                </nav>
+                
+        </div>
+        
+        
+        <h2>Datos del Evento</h2>
+
+        <br>
+            
+            <form th:action="@{/save}"
+                  method="post"
+                  th:object="${evento}">
+                
+                <input type="hidden" name="id" th:field="*{id}" />
+                
+                <label for="evento">Evento:</label>
+                <input type="text" name="evento" th:field="*{evento}"/>
+                <br>
+                    
+                <label for="artista">Artista:</label>
+                <input type="text" name="artista" th:field="*{artista}"/>
+                <br>
+                  
+                <label for="costo">Costo:</label>
+                <input type="text" name="costo" th:field="*{costo}"/>
+                <br>
+                
+                <label for="fecha">Fecha:</label>
+                <input type="text" name="fecha" th:field="*{fecha}"/>
+                <br>
+                    
+                <label for="capacidad">Capacidad Maxima:</label>
+                <input type="text" name="capacidad" th:field="*{capacidad}"/>
+                <br>
+                    
+                <label for="lugar">Lugar:</label>
+                <input type="text" name="lugar" th:field="*{lugar}"/>
+                <br>
+                    
+                <input type="submit" name="guardar" value="Guardar"/>
+                
+            </form>
+        
+            
+    </body>
+    
+</html>

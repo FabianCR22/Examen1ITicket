@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <title>ITicket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <link rel="stylesheet" href="css/home.css"/>
+            
+    </head>
+    
+    <body>
+        
+        <div class="navbar">
+                
+                <img src="images/iticketlogo.png" alt="alt" class="logo"/>
+                
+                
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="crear.html">Crear Evento</a></li>                    
+                    </ul> 
+                </nav>
+                
+        </div>
+
+        
+        <h2>Historial de Eventos</h2>
+
+        
+        <div th:if="${eventos != null and !eventos.empty}">
+        
+            <table>
+                
+                <thead>
+                    
+                    <tr>
+                        
+                        <th>ID</th>
+                        <th>Evento</th>
+                        <th>Artista</th>
+                        <th>Costo</th>
+                        <th>Fecha</th>
+                        <th>Capacidad Maxima</th>
+                        <th>Lugar</th>
+                        <th>Eliminar</th>
+                        
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    
+                    <th:block th:each="event : ${eventos}">
+                        
+                        <tr>
+                        
+                            <td th:text="${evento.getId}"></td>
+                            <td th:text="${evento.getEvento}"></td>
+                            <td th:text="${evento.getArtista}"></td>
+                            <td th:text="${evento.getCosto}"></td>
+                            <td th:text="${evento.getFecha}"></td>
+                            <td th:text="${evento.getCapacidad}"></td>
+                            <td th:text="${evento.getLugar}"></td>
+                            <td><a th:href="@{/delete/{id}(id=${event.getId})}">Eliminar</a></td>
+                        
+                        </tr>
+                        
+                    </th:block>
+                    
+                    
+                </tbody>
+                
+            </table>
+        
+        </div>
+        
+        <!-- 
+        <div th:if="${eventos == null or eventos.empty}">
+        
+            No tenemos historial de eventos
+        
+        </div> 
+        -->
+        
+        
+    </body>
+    
+</html>
